@@ -35,19 +35,30 @@ class Clarifai_App():
         print("app: ", self.app)
 
 
-class Object_Classifier():
-    def __init__(self):
+class Object_Classifier(object):
+    def __init__(self, image_url):
         self.app = ClarifaiApp(api_key='7d9991430a9d4fe4943315cf2651149a') #api key to clarifai app 
         self.model = self.app.public_models.general_model
+        self.image_url = image_url
 
-    def classifyImage(self, imageURL):
+    def classify_image(self):
         # call the clarify image recognition API 
         # return json response of items identified and confidence levels 
         self.model.model_version = 'aa7f35c01e0642fda5cf400f543e7c40'
-        image = ClImage(url=imageURL)
+        image = ClImage(url=self.image_url)
         response = self.model.predict([image])
 
         return response
+
+    def get_concepts(self):
+        response = self.classify_image()
+        concepts = response['outputs'][0]['data']['concepts']
+        objects = [concept['name'] for concept in concepts]
+        confidenceLevels = [concept['value'] for concept in concepts]
+
+        returnValues = (objects, confidenceLevels)
+        return returnValues
+
 
 def main():
     db_conn = Db_Connection()
@@ -56,9 +67,11 @@ def main():
     
     #clarifai_app = Clarifai_App()
 
-    object_classifier = Object_Classifier()
-    response = object_classifier.classifyImage('https://sc01.alicdn.com/kf/HTB1FM3eLXXXXXadXXXXq6xXFXXXC/teddy-bear-stuff-toys.jpg_350x350.jpg')
-    print(response)
+    object_classifier = Object_Classifier('https://sc01.alicdn.com/kf/HTB1FM3eLXXXXXadXXXXq6xXFXXXC/teddy-bear-stuff-toys.jpg_350x350.jpg')
+    vals = object_classifier.get_concepts()
+    print(vals)
+    #response = object_classifier.classify_image('https://sc01.alicdn.com/kf/HTB1FM3eLXXXXXadXXXXq6xXFXXXC/teddy-bear-stuff-toys.jpg_350x350.jpg')
+    #print(response)
 if __name__ == '__main__':
     main()
 

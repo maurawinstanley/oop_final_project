@@ -17,6 +17,7 @@ class Product extends Component {
 
   handleSubmit(event) {
     alert('URL successfully submitted, now categorizing... ' + this.state.value);
+    
     event.preventDefault();
   }
 

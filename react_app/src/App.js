@@ -60,7 +60,7 @@ class App extends React.Component {
         <form onSubmit={this.handleSubmit} action="http://localhost:5000/result" method="get">
         <label>
           URL to Classify
-          <input type="text" URL ="url"/>
+          <input type="text" name="url"/>
           <input type="submit" onChange={this.handleChange} value={this.state.value} />
         </label>
       </form>

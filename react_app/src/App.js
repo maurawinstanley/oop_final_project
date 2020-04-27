@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom';
 
 // function App() {
 //   const [currentTime, setCurrentTime] = useState(0);
@@ -24,7 +25,6 @@ import './App.css';
 // }
 
 // export default App;
-
 
 class App extends React.Component {
 
@@ -54,7 +54,12 @@ class App extends React.Component {
       })
   }
 
+  
+
   render() {
+    // const recycleStyle = {
+    //   backgroundColor: 'blue',
+    // };
     return (
       <div>
         <form onSubmit={this.handleSubmit} action="http://localhost:5000/result" method="get">
@@ -70,6 +75,6 @@ class App extends React.Component {
   }
 }
 
-
+ReactDOM.render(<App />, document.getElementById('root'));
 export default App;
 

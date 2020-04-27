@@ -56,19 +56,24 @@ class App extends React.Component {
 
   
 
+
   render() {
     // const recycleStyle = {
     //   backgroundColor: 'blue',
     // };
     return (
       <div>
+        <p>Recycle Sort</p>
+        
         <form onSubmit={this.handleSubmit} action="http://localhost:5000/result" method="get">
         <label>
           URL to Classify
           <input type="text" name="url"/>
-          <input type="submit" onChange={this.handleChange} value={this.state.value} />
+          <p>
+            <button type="submit" class="button" value="Submit" onChange={this.handleChange} value={this.state.value}>Submit</button>  
+          </p>
         </label>
-      </form>
+        </form>
         
       </div>
     );

@@ -58,6 +58,3 @@ class Object_Classifier(object):
                         ret_string = "This item can be recycled!"
             print("filterRecycling result: {}".format(ret_string))
             return ret_string
-            # insert into a database
-            # session.execute('INSERT INTO recycletable (hashval, photo, recycle) VALUES (%s, %s, %s)',
-            #                 (og_filename.replace("/", ""), photo_name, retString))

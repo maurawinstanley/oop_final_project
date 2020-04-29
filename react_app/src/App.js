@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom';
 
 // function App() {
 //   const [currentTime, setCurrentTime] = useState(0);
@@ -24,7 +25,6 @@ import './App.css';
 // }
 
 // export default App;
-
 
 class App extends React.Component {
 
@@ -54,22 +54,32 @@ class App extends React.Component {
       })
   }
 
+  
+
+
   render() {
+    // const recycleStyle = {
+    //   backgroundColor: 'blue',
+    // };
     return (
       <div>
+        <p>Recycle Sort</p>
+        
         <form onSubmit={this.handleSubmit} action="http://localhost:5000/result" method="get">
         <label>
           URL to Classify
-          <input type="text" URL ="url"/>
-          <input type="submit" onChange={this.handleChange} value={this.state.value} />
+          <input type="text" name="url"/>
+          <p>
+            <button type="submit" class="button" value="Submit" onChange={this.handleChange} value={this.state.value}>Submit</button>  
+          </p>
         </label>
-      </form>
+        </form>
         
       </div>
     );
   }
 }
 
-
+ReactDOM.render(<App />, document.getElementById('root'));
 export default App;
 

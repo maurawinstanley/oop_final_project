@@ -3,9 +3,10 @@ from flask import Flask, request, jsonify
 import logging 
 import sys
 
-sys.path.insert(1, '/Users/mauraw/Documents/oop')
+sys.path.insert(1, '/Users/karawallace/Desktop')
 
-from final_project import client
+
+from oop_final_project import client
 logger = logging.getLogger()
 app = Flask(__name__)
 

@@ -2,7 +2,7 @@
 
 ##### Abbigail Nicholson, Kara Wallace and Maura Winstanley 
 
-###To Run:
+### To Run:
 
 ** In api.py on line 6 change the directory to where the project (`oop_final_project`) is located 
 
